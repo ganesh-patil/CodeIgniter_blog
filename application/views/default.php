@@ -25,6 +25,9 @@
         <div class="col-md-4">
 
             <!-- Blog Search Well -->
+            <div  class="well">
+                <a type="button" href="google.com" class="btn btn-primary">Creat post</a>
+            </div>
             <div class="well">
                 <h4>Blog Search</h4>
                 <div class="input-group">
@@ -35,6 +38,7 @@
                         </button>
                         </span>
                 </div>
+
                 <!-- /.input-group -->
             </div>
 

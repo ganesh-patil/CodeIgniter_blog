@@ -1,8 +1,9 @@
 <html>
 <head>
     <title>My Blog</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/blog-post.css">
+
+    <?php echo link_tag('css/bootstrap.css')?>
+    <?php echo link_tag('css/blog-post.css')?>
     <script type='text/javascript' src="<?php echo base_url(); ?>js/jquery.js"></script>
 </head>
 <body>
@@ -11,14 +12,15 @@
 
 <!-- Page Content -->
 <div class="container">
-
+    <?php echo $this->session->flashdata('success');
+    echo $this->session->flashdata('error');
+    ?>
     <div class="row">
 
         <!-- Blog Post Content Column -->
+
         <div class="col-lg-8">
-
             <?php $this->load->view($partial); ?>
-
         </div>
 
         <!-- Blog Sidebar Widgets Column -->
@@ -26,7 +28,7 @@
 
             <!-- Blog Search Well -->
             <div  class="well">
-                <a type="button" href="google.com" class="btn btn-primary">Creat post</a>
+                <a type="button" href="/create_post" class="btn btn-primary">Creat post</a>
             </div>
             <div class="well">
                 <h4>Blog Search</h4>

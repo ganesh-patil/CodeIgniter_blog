@@ -14,6 +14,7 @@ class Blog extends MY_Controller {
      */
     public function index()
     {
+        log_message('debug', 'In Index page ');
         $this->load->model('post_model');
        
         $this->load->library('pagination');
@@ -36,17 +37,16 @@ class Blog extends MY_Controller {
      */
     public function create_post()
     {
-        $this->load->helper('form');
+        $this->load->helper('form','url');
         if($this->input->method() == 'post') {
-            $postData = $this->getPostInputData();
             $this->load->model('post_model');
-
-            if($this->post_model->insert_entry($postData)){
-                $this->session->set_flashdata('success', 'Post added successfully.');
-                redirect('/');
-            }
-            else{
-                $this->session->set_flashdata('error', 'Post not added please try again.');
+            if($this->post_model->check_is_valid_data()){
+                $postData = $this->getPostInputData();
+                $this->load->model('post_model');
+                if($this->post_model->insert_entry($postData)){
+                    $this->session->set_flashdata('success', 'Post added successfully.');
+                     redirect(base_url());
+                }
             }
         }
         $data['partial'] = 'create_post';

@@ -32,4 +32,16 @@ class Post_model extends CI_Model {
 //        $this->db->update('entries', $this, array('id' => $_POST['id']));
     }
 
+    public function check_is_valid_data(){
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('post_title', 'post_title', 'required');
+        $this->form_validation->set_rules('post_description', 'post_description', 'required');
+        if ($this->form_validation->run() == TRUE)
+        {
+            return true;
+        }
+        return false;
+    }
+
 }

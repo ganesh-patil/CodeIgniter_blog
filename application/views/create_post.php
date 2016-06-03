@@ -1,5 +1,7 @@
 <?php
-    echo form_open('blog/create_post'); ?>
+    echo form_open(base_url().'blog'.DIRECTORY_SEPARATOR.'create_post');
+
+?>
     <div class="form-group">
        <?php  echo form_label('Post Title', 'post_title');
         echo form_input(array(
@@ -9,7 +11,9 @@
             'maxlength'     => '100',
             'size'          => '50',
             'style'         => 'width:50%'
-        )); ?>
+        ));
+      echo form_error('post_title');
+       ?>
     </div>
     <div class="form-group">
         <?php  echo form_label('Post Desciption', 'post_description');
@@ -20,7 +24,10 @@
             'maxlength'     => '100',
             'size'          => '50',
             'style'         => 'width:50%'
-        )); ?>
+        ));
+
+        echo form_error('post_description');
+        ?>
     </div>
 
   <?php echo form_submit('Add Post','Add Post',array(
